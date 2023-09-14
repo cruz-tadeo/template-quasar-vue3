@@ -1,0 +1,18 @@
+{
+  "extends": "@quasar/app-vite/tsconfig-preset",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "types": [
+      "vite/client"
+    ],
+	"paths": {
+		"@banner/*": ["src/app/banner/*"],
+		"@shared/*": ["src/shared/*"],
+		"@component/*": ["src/components/*"],
+	},
+	"target": "es6",
+	"module": "commonjs",
+    "noImplicitThis": false,
+    "experimentalDecorators": true,
+  }
+}
