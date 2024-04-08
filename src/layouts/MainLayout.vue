@@ -56,7 +56,7 @@ function toggleLeftDrawer() {
 
 <template>
 	<q-layout view="lHh Lpr lFf">
-		<!-- <q-header elevated>
+		<q-header elevated>
 			<q-toolbar>
 				<q-btn
 					aria-label="Menu"
@@ -83,7 +83,7 @@ function toggleLeftDrawer() {
 					v-bind="link"
 				/>
 			</q-list>
-		</q-drawer> -->
+		</q-drawer> 
 
 		<q-page-container>
 			<router-view />

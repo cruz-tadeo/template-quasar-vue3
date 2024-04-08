@@ -1,3 +1,5 @@
 export const TYPES = {
-	IHttpAdapter: Symbol('IHttpAdapter')
+	IHttpAdapter: Symbol('IHttpAdapter'),
+	IUserRepository: Symbol('IUserRepository'),
+	GetUser: Symbol('GetUser'),
 }

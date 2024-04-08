@@ -1,10 +1,17 @@
+import { AxiosHttpAdapter } from '../shared/interfaces/adapters/AxiosHttpAdapter';
+import { IHttpAdapter } from '../shared/interfaces/adapters/IHttpAdapter';
 import { Container } from 'inversify'
-import { TYPES } from 'src/config/types'
+import { GetUser, IUserRepository, UserRepository } from 'src/app/users';
+import { TYPES } from '../config/types'
 
 const container = new Container()
 
-// container.bind<IHttpAdapter>(TYPES.IHttpAdapter).to(AxiosHttpAdapter)
-// container.bind<IUserRepository>(TYPES.IUserRepository).to(UserRepository)
-// container.bind<GetUsers>(TYPES.GetUsers).to(GetUsers)
+//Repository
+container.bind<IHttpAdapter>(TYPES.IHttpAdapter).to(AxiosHttpAdapter);
+container.bind<IUserRepository>(TYPES.IUserRepository).to(UserRepository);
+
+
+//APPLICATION
+container.bind<GetUser>(TYPES.GetUser).to(GetUser);
 
 export { container }

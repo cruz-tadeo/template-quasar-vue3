@@ -1,22 +1,43 @@
-import { container } from 'src/config/container'
-import { TYPES } from 'src/config/types'
-import { ref } from 'vue'
-import { GetUsers, User } from 'src/app/core'
+import { GetUser, IUser } from 'src/app/users';
+import { container } from 'src/config/container';
+import { TYPES } from 'src/config/types';
+import { ref } from 'vue';
 
 export const useGetUsers = () => {
-  const getUsers = container.get<GetUsers>(TYPES.GetUsers)
-  const users = ref<User[]>([])
-  const loading = ref(false)
+	const getUser = container.get<GetUser>(TYPES.GetUser);
+	const user = ref<IUser>({
+		name: '',
+		username: '',
+		email: '',
+		address: {
+			street: '',
+			suite: '',
+			city: '',
+			zipcode: '',
+			geo: {
+				lat: '',
+				lng: ''
+			}
+		},
+		phone: '',
+		website: '',
+		company: {
+			name: '',
+			catchPhrase: '',
+			bs: ''
+		}
+	});
+	const loading = ref(false);
 
-  const fetchUsers = async () => {
-    loading.value = true
-    users.value = await getUsers.execute()
-    loading.value = false
-  }
+	const fetchUser = async (id: number) => {
+		loading.value = true;
+		user.value = await getUser.execute(id);
+		loading.value = false;
+	};
 
-  return {
-    users,
-    loading,
-    fetchUsers
-  }
-}
+	return {
+		user,
+		loading,
+		fetchUser
+	};
+};
